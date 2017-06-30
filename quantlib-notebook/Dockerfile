@@ -1,10 +1,11 @@
-FROM lballabio/quantlib-python:zesty
+ARG tag=latest
+FROM lballabio/quantlib-python:${tag}
 MAINTAINER Luigi Ballabio <luigi.ballabio@gmail.com>
 LABEL Description="An IPython notebook server with the QuantLib Python module available"
 
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y python-notebook python-matplotlib \
-                                                      python-pandas python-seaborn \
+                                                      python-pandas \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
